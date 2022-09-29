@@ -40,4 +40,22 @@ const iTetromino = [
   [width, width + 1, width + 2, width + 3],
 ];
 
-const theTetrominos = [lTetromino, zTetromino, tTetromino, iTetromino, oTetromino];
+const theTetrominos = [
+  lTetromino,
+  zTetromino,
+  tTetromino,
+  iTetromino,
+  oTetromino,
+];
+
+let currentPosition = 0;
+let current = theTetrominos[0][0];
+
+// draw first rotation of first tetromino
+function draw() {
+  current.forEach((index) => {
+    squares[currentPosition + index].classList.add('tetromino');
+  });
+}
+
+draw();
