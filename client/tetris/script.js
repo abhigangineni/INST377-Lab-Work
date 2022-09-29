@@ -69,8 +69,17 @@ function undraw() {
   });
 }
 
-// Make the tetrominos move down every second
-timerId = setInterval(moveDown, 1000);
+// freeze function
+function freeze() {
+  if (current.some((index) => squares[currentPosition + index + width].classList.contains("taken"))) {
+    current.forEach((index) => squares[currentPosition + index].classList.add("taken"));
+    // Start a new tetromino falling
+    random = Math.floor(Math.random() * theTetrominos.length);
+    current = theTetrominos[random][currentRotation];
+    currentPosition = 4;
+    draw();
+  }
+}
 
 // move down function
 function moveDown() {
@@ -80,20 +89,28 @@ function moveDown() {
   freeze();
 }
 
-// freeze function
-function freeze() {
-  if (
-    current.some((index) =>
-      squares[currentPosition + index + width].classList.contains("taken")
-    )
-  ) {
-    current.forEach((index) =>
-      squares[currentPosition + index].classList.add("taken")
-    );
-    // Start a new tetromino falling
-    random = Math.floor(Math.random() * theTetrominos.length);
-    current = theTetrominos[random][currentRotation];
-    currentPosition = 4;
-    draw();
+// move tetromino to the left unless hits edge or blockage
+function moveLeft() {
+  undraw();
+  const isAtLeftEdge = current.some((index) => (currentPosition + index) % width === 0);
+
+  if (!isAtLeftEdge) currentPosition -= 1;
+
+  if (current.some((index) => squares[currentPosition + index].classList.contains("taken"))) {
+    currentPosition += 1;
+  }
+
+  draw();
+}
+
+// Make the tetrominos move down every second
+timerId = setInterval(moveDown, 1000);
+
+// assign functions to keycodes
+function control(e) {
+  if (e.keyCode === 37) {
+    moveLeft();
   }
 }
+
+document.addEventListener('keyup', control)
