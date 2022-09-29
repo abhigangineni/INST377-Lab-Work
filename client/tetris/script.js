@@ -141,4 +141,15 @@ function control(e) {
   }
 }
 
-document.addEventListener("keyup", control);
+// rotate the tetramino
+function rotate() {
+  undraw();
+  currentRotation += 1;
+  if (currentRotation === current.length) {
+    currentRotation = 0;
+  }
+  current = theTetrominos[random][current];
+  draw();
+}
+
+document.addEventListener('keyup', control);
