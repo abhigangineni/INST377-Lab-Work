@@ -48,8 +48,12 @@ const theTetrominos = [
   oTetromino,
 ];
 
-let currentPosition = 0;
-let current = theTetrominos[0][0];
+let currentPosition = 4;
+let currentRotation = 0;
+
+// randomly choose a tetromino
+let random = Math.floor(Math.random*theTetrominos.length);
+let current = theTetrominos[random][currentRotation];
 
 // draw first rotation of first tetromino
 function draw() {
