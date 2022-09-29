@@ -52,13 +52,20 @@ let currentPosition = 4;
 let currentRotation = 0;
 
 // randomly choose a tetromino
-let random = Math.floor(Math.random*theTetrominos.length);
+let random = Math.floor(Math.random()*theTetrominos.length);
+console.log(random);
 let current = theTetrominos[random][currentRotation];
 
 // draw first rotation of first tetromino
 function draw() {
   current.forEach((index) => {
-    squares[currentPosition + index].classList.add('tetromino');
+    squares[currentPosition + index].classList.add("tetromino");
+  });
+}
+
+function undraw() {
+  current.forEach((index) => {
+    squares[currentPosition + index].classList.remove('tetromino');
   });
 }
 
