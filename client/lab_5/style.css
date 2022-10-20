@@ -96,6 +96,7 @@
     color: #52ef87;
   
     /* shapes */
+    border: 2px dashed;
     border-radius: 6px;
     font-size: 1.5rem;
     padding: 1.25rem;
@@ -158,6 +159,7 @@
     color: rgb(159, 233, 209);
     font-size: 1.2rem;
     font-weight: 600;
+    border: 2px dashed;
   }
   
   .footer a {
@@ -310,6 +312,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+      }
+
+      .box {
+        width: 100%
+      }
+  
+      .right_section {
+        align-items: flex-start
       }
   }
 
