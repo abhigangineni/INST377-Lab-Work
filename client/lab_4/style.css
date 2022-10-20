@@ -165,6 +165,7 @@ form {
 .footer a {
   color: rgb(75, 241, 19);
   text-decoration: underline;
+  border-style: none;
 }
 
 /*
